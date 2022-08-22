@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-date-picker';
+import DatePicker from '../dist/entry';
 
 import './Sample.less';
 
@@ -22,6 +22,7 @@ export default function Sample() {
             onChange={onChange}
             value={value}
             yearAriaLabel="Year"
+            placeholderText="Select a date"
           />
         </main>
       </div>

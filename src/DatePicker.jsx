@@ -155,6 +155,7 @@ export default class DatePicker extends PureComponent {
       locale,
       maxDate,
       maxDetail,
+      placeholderText,
       minDate,
       monthAriaLabel,
       monthPlaceholder,
@@ -186,38 +187,6 @@ export default class DatePicker extends PureComponent {
 
     return (
       <div className={`${baseClassName}__wrapper`}>
-        <DateInput
-          {...ariaLabelProps}
-          {...placeholderProps}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
-          className={`${baseClassName}__inputGroup`}
-          disabled={disabled}
-          format={format}
-          isCalendarOpen={isOpen}
-          locale={locale}
-          maxDate={maxDate}
-          maxDetail={maxDetail}
-          minDate={minDate}
-          name={name}
-          onChange={this.onChange}
-          required={required}
-          returnValue={returnValue}
-          showLeadingZeros={showLeadingZeros}
-          value={valueFrom}
-        />
-        {clearIcon !== null && (
-          <button
-            aria-label={clearAriaLabel}
-            className={`${baseClassName}__clear-button ${baseClassName}__button`}
-            disabled={disabled}
-            onClick={this.clear}
-            onFocus={this.stopPropagation}
-            type="button"
-          >
-            {clearIcon}
-          </button>
-        )}
         {calendarIcon !== null && !disableCalendar && (
           <button
             aria-label={calendarAriaLabel}
@@ -230,6 +199,46 @@ export default class DatePicker extends PureComponent {
           >
             {calendarIcon}
           </button>
+        )}
+        {valueFrom ? (
+          <>
+            <DateInput
+              {...ariaLabelProps}
+              {...placeholderProps}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              className={`${baseClassName}__inputGroup`}
+              disabled={disabled}
+              format={format}
+              isCalendarOpen={isOpen}
+              locale={locale}
+              maxDate={maxDate}
+              maxDetail={maxDetail}
+              minDate={minDate}
+              name={name}
+              onChange={this.onChange}
+              required={required}
+              returnValue={returnValue}
+              showLeadingZeros={showLeadingZeros}
+              value={valueFrom}
+            />
+            {clearIcon !== null && (
+              <button
+                aria-label={clearAriaLabel}
+                className={`${baseClassName}__clear-button ${baseClassName}__button`}
+                disabled={disabled}
+                onClick={this.clear}
+                onFocus={this.stopPropagation}
+                type="button"
+              >
+                {clearIcon}
+              </button>
+            )}
+          </>
+        ) : (
+          <div className={`${baseClassName}__main_placeholder`} onClick={this.toggleCalendar}>
+            {placeholderText}
+          </div>
         )}
       </div>
     );
@@ -370,6 +379,7 @@ DatePicker.propTypes = {
   format: PropTypes.string,
   isOpen: PropTypes.bool,
   locale: PropTypes.string,
+  placeholderText: PropTypes.string,
   maxDate: isMaxDate,
   maxDetail: PropTypes.oneOf(allViews),
   minDate: isMinDate,
