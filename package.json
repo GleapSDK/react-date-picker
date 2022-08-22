@@ -1,6 +1,6 @@
 {
   "name": "react-date-picker-gleap",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "description": "A date picker for your React app.",
   "main": "dist/entry.js",
   "source": "src/entry.js",
@@ -14,7 +14,6 @@
     "copy-types": "node ./copy-types.js",
     "jest": "jest",
     "lint": "eslint sample/ src/ test/ --ext .jsx,.js",
-    "postinstall": "husky install",
     "prepack": "yarn clean && yarn build",
     "test": "yarn lint && yarn jest"
   },
@@ -83,7 +82,6 @@
     "enzyme": "^3.10.0",
     "eslint": "^8.5.0",
     "eslint-config-wojtekmaj": "^0.6.5",
-    "husky": "^8.0.0",
     "jest": "^27.0.0",
     "less": "^4.0.0",
     "prettier": "^2.5.0",
